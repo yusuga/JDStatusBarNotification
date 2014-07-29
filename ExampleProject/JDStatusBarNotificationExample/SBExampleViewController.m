@@ -59,6 +59,7 @@ static NSString *const SBStyle2 = @"SBStyle2";
                                            } else {
                                                style.font = [UIFont fontWithName:@"HelveticaNeue-CondensedBold" size:17.0];
                                            }
+                                           style.image = [UIImage imageNamed:@"check"];
                                            return style;
                                        }];
         

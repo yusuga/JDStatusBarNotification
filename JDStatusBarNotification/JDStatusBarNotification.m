@@ -227,6 +227,13 @@
     self.progress = 0.0;
     [self showActivityIndicator:NO indicatorStyle:0];
     
+    // set image
+    if (style.image) {
+        self.topBar.imageView.image = style.image;
+    } else {
+        self.topBar.imageView.image = nil;
+    }
+    
     // animate in
     BOOL animationsEnabled = (style.animationType != JDStatusBarAnimationTypeNone);
     if (animationsEnabled && style.animationType == JDStatusBarAnimationTypeBounce) {

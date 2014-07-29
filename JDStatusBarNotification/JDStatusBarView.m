@@ -11,6 +11,7 @@
 @interface JDStatusBarView ()
 @property (nonatomic, strong) UILabel *textLabel;
 @property (nonatomic, strong) UIActivityIndicatorView *activityIndicatorView;
+@property (nonatomic, strong) UIImageView *imageView;
 @end
 
 @implementation JDStatusBarView
@@ -41,6 +42,15 @@
     return _activityIndicatorView;
 }
 
+- (UIImageView*)imageView
+{
+    if (_imageView == nil) {
+        _imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0.f, 0.f, 15, 15)];
+        [self addSubview:_imageView];
+    }
+    return _imageView;
+}
+
 #pragma mark setter
 
 - (void)setTextVerticalPositionAdjustment:(CGFloat)textVerticalPositionAdjustment;
@@ -61,12 +71,23 @@
     
     // activity indicator
     if (_activityIndicatorView ) {
-        CGSize textSize = [self currentTextSize];
-        CGRect indicatorFrame = _activityIndicatorView.frame;
-        indicatorFrame.origin.x = round((self.bounds.size.width - textSize.width)/2.0) - indicatorFrame.size.width - 8.0;
-        indicatorFrame.origin.y = ceil(1+(self.bounds.size.height - indicatorFrame.size.height)/2.0);
-        _activityIndicatorView.frame = indicatorFrame;
+        _activityIndicatorView.frame = [self attachedObjectFrameWithViewSize:_activityIndicatorView.bounds.size];
     }
+    
+    // image view
+    if (_imageView) {
+        _imageView.frame = [self attachedObjectFrameWithViewSize:_imageView.bounds.size];
+    }
+}
+
+- (CGRect)attachedObjectFrameWithViewSize:(CGSize)viewSize
+{
+    CGSize textSize = [self currentTextSize];
+    CGRect frame;
+    frame.origin.x = round((self.bounds.size.width - textSize.width)/2.0) - viewSize.width - 8.0;
+    frame.origin.y = ceil((self.bounds.size.height - viewSize.height)/2.0);
+    frame.size = viewSize;
+    return frame;
 }
 
 - (CGSize)currentTextSize;

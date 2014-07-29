@@ -25,6 +25,7 @@ NSString *const JDStatusBarStyleDark    = @"JDStatusBarStyleDark";
     style.textShadow = self.textShadow;
     style.font = self.font;
     style.textVerticalPositionAdjustment = self.textVerticalPositionAdjustment;
+    style.image = self.image;
     style.animationType = self.animationType;
     style.progressBarColor = self.progressBarColor;
     style.progressBarHeight = self.progressBarHeight;
