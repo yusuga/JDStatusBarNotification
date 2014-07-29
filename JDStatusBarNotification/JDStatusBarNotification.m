@@ -230,6 +230,7 @@
     // set image
     if (style.image) {
         self.topBar.imageView.image = style.image;
+        [self.topBar.imageView sizeToFit];
     } else {
         self.topBar.imageView.image = nil;
     }

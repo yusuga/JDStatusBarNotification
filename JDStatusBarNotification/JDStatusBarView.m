@@ -45,7 +45,7 @@
 - (UIImageView*)imageView
 {
     if (_imageView == nil) {
-        _imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0.f, 0.f, 15, 15)];
+        _imageView = [[UIImageView alloc] init];
         [self addSubview:_imageView];
     }
     return _imageView;
